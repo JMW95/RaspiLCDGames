@@ -56,7 +56,7 @@ def draw():
 	s.clear()
 	s.rect(foodpos[0]*SCALE, foodpos[1]*SCALE, ((foodpos[0]+1)*SCALE)-1, ((foodpos[1]+1)*SCALE)-1)
 	for bit in snakebits:
-		s.fillrect(bit[0]*SCALE, bit[1]*SCALE, ((bit[0]+1)*SCALE)-1, ((bit[1]+1)*SCALE)-1)
+		s.fill_rect(bit[0]*SCALE, bit[1]*SCALE, ((bit[0]+1)*SCALE)-1, ((bit[1]+1)*SCALE)-1)
 
 def showsplash(screen):
 	s.clear()

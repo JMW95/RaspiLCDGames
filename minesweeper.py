@@ -19,7 +19,7 @@ mines = [[0] * WIDTH for i in range(HEIGHT)] #0:empty, 255:mine, 1-8:mine adjace
 flags = [[0] * WIDTH for i in range(HEIGHT)] #0:no flag, 1:flag, 2:revealed
 
 textfont = s.fontsheet
-minefont = s.loadfontsheet("mines.png",5,5)
+minefont = s.load_font_sheet("mines.png",5,5)
 
 def generate(nummines):
 	global mines, toreveal
@@ -73,18 +73,18 @@ def drawtile(x,y):
 
 def draw():
 	global blink, redrawtiles
-	#if len(redrawtiles)>0:
-	#	for tile in redrawtiles:
-	#		drawtile(tile[0],tile[1])
-	#else:
-	s.clear()
-	for x in range(0, WIDTH + 1):
-		s.line(x*6,0,x*6,HEIGHT*6)
-	for y in range(0, HEIGHT + 1):
-		s.line(0,y*6,WIDTH*6,y*6)
-	for y in range(HEIGHT):
-		for x in range(WIDTH):
-			drawtile(x,y)
+	if len(redrawtiles)>0:
+		for tile in redrawtiles:
+			drawtile(tile[0],tile[1])
+	else:
+		s.clear()
+		for x in range(0, WIDTH + 1):
+			s.line(x*6,0,x*6,HEIGHT*6)
+		for y in range(0, HEIGHT + 1):
+			s.line(0,y*6,WIDTH*6,y*6)
+		for y in range(HEIGHT):
+			for x in range(WIDTH):
+				drawtile(x,y)
 	if blink>=8 or not alive:
 		s.put_text(chr(12), (selected[0]*6)+1, (selected[1]*6)+1)
 	s.redraw()
